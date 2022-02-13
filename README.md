@@ -1,30 +1,32 @@
-# Coin-Flip-Experiment
-Write a code that counts how many streaks of 6 heads and 6 tails occur in a row in a sample size of 10,000
+# Coin-Flip-Experiment, one side face-up
+
 import random
 
-heads = 0
-tails = 0
+face_up = 0
+face_down = 0
 results = [ ]
 stringResults = ' '
 numberOfStreaks = 0
 
-# Executes the "coin flip"
+# This code executes the "coin flip"
 
-for coinFlip in range(10000):
-    coinFlip = random.randint(0,1)
-    results.append(str(coinFlip))
-    if coinFlip == 0:
-        heads += 1
-    elif coinFlip == 1:
-        tails += 1
+for coinFlip in range(10000 ):
+    coinFlip = random.randint(1,100)
+    if coinFlip < 52: # result would be a number between 1 and 51 and will be considered face up
+        results.append('U')
+        face_up += 1
+    else: # result would be face down
+        results.append('D')
+        face_down += 1
 
-#  Count the number of times a streak of heads or tails is present in my results
+#  count the number of times a streak is present in my results
 stringResults = stringResults.join(results) # this turns my results of the coinflips into a string
-count_streak0 = stringResults.count('0 ' * 6)
-count_streak1 = stringResults.count('1 ' * 6)
-numberOfStreaks = count_streak0 + count_streak1
+count_streakU = stringResults.count('U ' * 6)
+count_streakD = stringResults.count('D ' * 6)
+numberOfStreaks = count_streakU + count_streakD
 
-print('Heads = ' + str(heads))
-print('Tails = ' + str(tails))
+
+print('Face up = ' + str(face_up))
+print('Face down = ' + str(face_down))
 print('Number of streaks = ' + str(numberOfStreaks))
 print('Chance of streak: %s%%' % (numberOfStreaks / 100))
