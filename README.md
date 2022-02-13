@@ -19,7 +19,7 @@ for coinFlip in range(10000 ):
         results.append('D')
         face_down += 1
 
-#  count the number of times a streak is present in my results
+#  Count the number of times a streak is present in my results
 stringResults = stringResults.join(results) # this turns my results of the coinflips into a string
 count_streakU = stringResults.count('U ' * 6)
 count_streakD = stringResults.count('D ' * 6)
